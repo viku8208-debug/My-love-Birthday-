@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      (function() {
+        try {
+          var currentFetch = window.fetch;
+          var patchSuccess = false;
+
+          function applyPatch(obj) {
+            try {
+              var desc = Object.getOwnPropertyDescriptor(obj, 'fetch');
+              if (desc && !desc.configurable) {
+                return false;
+              }
+              Object.defineProperty(obj, 'fetch', {
+                get: function() {
+                  return currentFetch;
+                },
+                set: function(val) {
+                  currentFetch = val;
+                },
+                configurable: true,
+                enumerable: true
+              });
+              return true;
+            } catch (e) {
+              return false;
+            }
+          }
+
+          applyPatch(window);
+
+          if (typeof Window !== 'undefined' && Window.prototype) {
+            applyPatch(Window.prototype);
+          }
+
+          var proto = Object.getPrototypeOf(window);
+          if (proto) {
+            applyPatch(proto);
+          }
+        } catch (e) {
+          console.warn("Protected fetch fallback could not be registered:", e);
+        }
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy 18th Birthday My Love! ❤️</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

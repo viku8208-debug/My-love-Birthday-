@@ -1,0 +1,6 @@
+{
+  "name": "Cute 18th Birthday Wishing for Boyfriend",
+  "description": "An ultra-cute, romantic, and immersive birthday wishing website with music, scrolling timeline, chibi game, and a floating digital love letter.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
