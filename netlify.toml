@@ -1,6 +1,6 @@
 [build]
   base = "reel-birthday-surprise"
-  command = "mkdir -p public /tmp/birthday-build && base64 --decode source-package.zip.b64 > /tmp/birthday-build/site.zip && unzip -q /tmp/birthday-build/site.zip -d /tmp/birthday-build && cp -R /tmp/birthday-build/birthday-site-publish/. public/"
+  command = "mkdir -p public /tmp/birthday-build && base64 --decode source-package.zip.b64 > /tmp/birthday-build/site.zip && unzip -q /tmp/birthday-build/site.zip -d /tmp/birthday-build && cp -R /tmp/birthday-build/birthday-site-publish/. public/ && cp script.js public/script.js && mkdir -p public/assets && cat assets/song-parts/part-* > /tmp/birthday-build/birthday-song.mp3.b64 && base64 --decode /tmp/birthday-build/birthday-song.mp3.b64 > public/assets/birthday-song.mp3"
   publish = "public"
 
 [[headers]]
