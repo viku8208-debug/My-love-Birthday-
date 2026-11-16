@@ -1,0 +1,11 @@
+[build]
+  base = "reel-birthday-surprise"
+  command = "mkdir -p public /tmp/birthday-build && base64 --decode source-package.zip.b64 > /tmp/birthday-build/site.zip && unzip -q /tmp/birthday-build/site.zip -d /tmp/birthday-build && cp -R /tmp/birthday-build/birthday-site-publish/. public/"
+  publish = "public"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
